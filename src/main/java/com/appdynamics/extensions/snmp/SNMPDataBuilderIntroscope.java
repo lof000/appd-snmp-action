@@ -89,7 +89,7 @@ public class SNMPDataBuilderIntroscope {
 
         }
 
-        if( isAffectedEntityType(violationEvent, "APPLICATION_NODE")  || isAffectedEntityType(violationEvent, "APPLICATION_COMPONENT_NODE")    ){
+        if( isAffectedEntityType(violationEvent, "APPLICATION_NODE")  || isAffectedEntityType(violationEvent, "APPLICATION_COMPONENT_NODE")  || isAffectedEntityType(violationEvent, "APPLICATION_COMPONENT")   ){
             EvaluationEntity firstEntity =  getFirstEvEntity(violationEvent.getEvaluationEntity(),"APPLICATION_COMPONENT_NODE");
             if (firstEntity!=null){
                 TriggerCondition tCon = getApplicationNodeTriggeredCondition(firstEntity.getTriggeredConditions());

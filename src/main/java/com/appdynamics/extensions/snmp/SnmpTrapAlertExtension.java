@@ -126,7 +126,7 @@ public class SnmpTrapAlertExtension {
     "customer1_f161f981-6f1f-4fa8-a6ad-2235b48bd549"
 };
 */
-
+ /*
 String[] tmp = {
 "digibank",
  "10",
@@ -160,6 +160,41 @@ String[] tmp = {
  "POLICY_OPEN_CRITICAL",
  "ACCOUNT",
  "customer1_f161f981-6f1f-4fa8-a6ad-2235b48bd549"
+};
+*/
+String[] tmp = {
+"S344",
+"8",
+"Thu Sep 23 10:18:24 BRT 2021",
+"1",
+"ERROR",
+"Trap_Spectrum",
+"Teste_trap",
+"34",
+"2",
+"APPLICATION_COMPONENT",
+"S344Backend",
+"25",
+"1",
+"APPLICATION_COMPONENT_NODE",
+"S1CPTP37-S344Backend",
+"320",
+"1",
+"APPLICATION_COMPONENT_NODE",
+"S1CPTP37-S344Backend",
+"320",
+"Memory Used (%)",
+"120",
+"GREATER_THAN",
+"ABSOLUTE",
+"10.0",
+"79.0",
+"Teste_trap triggered at Thu Sep 23 10:18:24 BRT 2021. This policy was violated because the following conditions were met for he S344Backend Tier for the last 2 minute(s):   For Evaluation Entity: S1CPTP37-S344Backend Node - Memory Used (%) is greater than 10.0. Observed value = 79.0",
+"740",
+"http://S1APDP01:8090/controller/#location=APP_INCIDENT_DETAIL_MODAL&incident=",
+"POLICY_CONTINUES_CRITICAL",
+"ACCOUNT",
+"customer1_48fc1142-b3d3-4948-9b28-a210b7e6067e"
 };
 
         
