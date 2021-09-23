@@ -162,6 +162,8 @@ String[] tmp = {
  "customer1_f161f981-6f1f-4fa8-a6ad-2235b48bd549"
 };
 */
+
+/*
 String[] tmp = {
 "S344",
 "8",
@@ -191,6 +193,42 @@ String[] tmp = {
 "79.0",
 "Teste_trap triggered at Thu Sep 23 10:18:24 BRT 2021. This policy was violated because the following conditions were met for he S344Backend Tier for the last 2 minute(s):   For Evaluation Entity: S1CPTP37-S344Backend Node - Memory Used (%) is greater than 10.0. Observed value = 79.0",
 "740",
+"http://S1APDP01:8090/controller/#location=APP_INCIDENT_DETAIL_MODAL&incident=",
+"POLICY_CONTINUES_CRITICAL",
+"ACCOUNT",
+"customer1_48fc1142-b3d3-4948-9b28-a210b7e6067e"
+};
+*/
+
+String[] tmp = {
+    "S344",
+"8",
+"Thu Sep 23 14:24:24 BRT 2021",
+"1",
+"ERROR",
+"Trap_Spectrum",
+"Teste_trap",
+"34",
+"2",
+"MACHINE_INSTANCE",
+"S1CPTP37",
+"305",
+"1",
+"APPLICATION_COMPONENT_NODE",
+"S1CPTP37-java-MA",
+"307",
+"1",
+"APPLICATION_COMPONENT_NODE",
+"S1CPTP37-java-MA",
+"307",
+"Condition 1",
+"128",
+"GREATER_THAN",
+"ABSOLUTE",
+"10.0",
+"74.0",
+"Teste_trap triggered at Thu Sep 23 14:24:24 BRT 2021. This policy was violated because the following conditions were met for the S1CPTP37 Machine Instance for the last 2 minute(s):   For Evaluation Entity: S1CPTP37-java-MA Node - Condition 1 is greater than 10.0. Observed value = 74.0",
+"778",
 "http://S1APDP01:8090/controller/#location=APP_INCIDENT_DETAIL_MODAL&incident=",
 "POLICY_CONTINUES_CRITICAL",
 "ACCOUNT",
