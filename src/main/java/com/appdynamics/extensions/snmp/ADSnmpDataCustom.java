@@ -13,7 +13,7 @@ package com.appdynamics.extensions.snmp;
 /**
  * SNMP Data Object
  */
-public class ADSnmpDataIntroscope
+public class ADSnmpDataCustom
 {
 
     String agent;

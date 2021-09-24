@@ -41,7 +41,7 @@ public class SNMPSender {
 
 
 
-    public void sendTrap(Configuration config, ADSnmpDataIntroscope snmpData,String trapOid) {
+    public void sendTrap(Configuration config, ADSnmpData snmpData,String trapOid) {
 
         ArrayList<String> exceptions = new ArrayList<String>();
         //sending SNMP traps to all registered receivers
@@ -82,10 +82,10 @@ public class SNMPSender {
      * @throws 	IllegalAccessException 		Failed to access snmp trap variables
      */
     @SuppressWarnings("rawtypes")
-    private void sendV1Trap(String host, String port, String community, String trapHost, ADSnmpDataIntroscope snmpData,String trapOid)
+    private void sendV1Trap(String host, String port, String community, String trapHost, ADSnmpData snmpData,String trapOid)
             throws IOException, IllegalArgumentException, IllegalAccessException
     {
-        /*
+        
         Lookup lookUp = new Lookup();
 
         TransportMapping transport = new DefaultUdpTransportMapping();
@@ -139,7 +139,7 @@ public class SNMPSender {
         Snmp snmp = new Snmp(transport);
         snmp.send(pdu, comTarget);
         snmp.close();
-        */
+        
     }
 
     /**
@@ -154,7 +154,7 @@ public class SNMPSender {
      * @throws 	IllegalAccessException 		Failed to access snmp trap variables
      */
     @SuppressWarnings("rawtypes")
-    private void sendV2Trap(String host, String port, String community, String trapHost, ADSnmpDataIntroscope snmpData,String trapOid)
+    private void sendV2Trap(String host, String port, String community, String trapHost, ADSnmpData snmpData,String trapOid)
             throws IOException, IllegalArgumentException, IllegalAccessException
     {
         Lookup lookUp = new Lookup();
@@ -212,10 +212,10 @@ public class SNMPSender {
      * @throws 	IllegalAccessException 		Failed to access snmp trap variables
      */
     @SuppressWarnings("rawtypes")
-    private void sendV2TrapIntroscope(String host, String port, String community, String trapHost, ADSnmpDataIntroscope snmpData,String trapOid)
+    private void sendV2TrapIntroscope(String host, String port, String community, String trapHost, ADSnmpData snmpData,String trapOid)
             throws IOException, IllegalArgumentException, IllegalAccessException
     {
-        LookupIntroscope lookUp = new LookupIntroscope();
+        Lookup lookUp = new Lookup();
         System.out.println("oi estou mandandando uma trap v2 do introscope >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
         TransportMapping transport = new DefaultUdpTransportMapping();
         transport.listen();
@@ -276,10 +276,10 @@ public class SNMPSender {
      * @throws 	IllegalAccessException 		Failed to access snmp trap variables
      */
     @SuppressWarnings("rawtypes")
-    private void sendV3Trap(String host, String port, String trapHost, ADSnmpDataIntroscope snmpData, SnmpV3Configuration config,String trapOid,EngineProperties engineProperties)
+    private void sendV3Trap(String host, String port, String trapHost, ADSnmpData snmpData, SnmpV3Configuration config,String trapOid,EngineProperties engineProperties)
             throws IOException, IllegalArgumentException, IllegalAccessException
     {
-        /*
+        
         Lookup lookUp = new Lookup();
 
         TransportMapping transport = new DefaultUdpTransportMapping();
@@ -395,7 +395,7 @@ public class SNMPSender {
 
         snmp.send(pdu, usrTarget);
         snmp.close();
-        */
+        
     }
 
 

@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class SNMPDataBuilderIntroscope {
+public class SNMPDataBuilderCustom {
 
     private static final Joiner JOIN_ON_COMMA = Joiner.on(",");
     private Configuration config;
@@ -35,58 +35,35 @@ public class SNMPDataBuilderIntroscope {
     private static Logger logger = Logger.getLogger(SNMPDataBuilder.class);
 
 
-    SNMPDataBuilderIntroscope(Configuration config) {
+    SNMPDataBuilderCustom(Configuration config) {
         this.config = config;
         ControllerConfig controller = config.getController();
         clientBuilder = new HttpClientBuilder(controller.isUseSsl(), controller.getUserAccount(), controller.getPassword(), controller.getConnectTimeoutInSeconds() * 1000, controller.getSocketTimeoutInSeconds() * 1000);
         endpointBuilder = new EndpointBuilder();
     }
 
+    //builder
+    public void buildTrapDetails(HealthRuleViolationEvent violationEvent,ADSnmpDataCustom snmpData){
 
-    public ADSnmpDataIntroscope buildFromHealthRuleViolationEvent(HealthRuleViolationEvent violationEvent){
-
-        ADSnmpDataIntroscope snmpData = new ADSnmpDataIntroscope();
-
-        snmpData.setAgent("agent_name");
-        snmpData.setHost("host");
-        snmpData.setAgentType("AppDynamics_APM");
-        snmpData.setDomain(violationEvent.getAppName());
-        snmpData.setMetric("metric");
-        snmpData.setThreshold("0");
-        snmpData.setCurrentValue("0");
-
-        if (config.getController() != null) {
-            snmpData.setDrillDownLink(CommonUtils.getAlertUrl(violationEvent));
-        }
-        snmpData.setDrillDownLink(CommonUtils.getAlertUrl(violationEvent));
-
-        snmpData.setDate(violationEvent.getPvnAlertTime());
-
-
-        if(isAffectedEntityType(violationEvent, "BUSINESS_TRANSACTION")){
+        if(
+            isAffectedEntityType(violationEvent, "BUSINESS_TRANSACTION") || 
+            isAffectedEntityType(violationEvent, "APPLICATION")
+            ){ 
             EvaluationEntity firstEntity =  getFirstEvEntity(violationEvent.getEvaluationEntity(),"APPLICATION");
             if (firstEntity!=null){
                 TriggerCondition tCon = getApplicationTriggeredCondition(firstEntity.getTriggeredConditions());
                 snmpData.setAgent("APP:"+tCon.getScopeName());
                 snmpData.setHost("APP:"+tCon.getScopeName());
+                if(isAffectedEntityType(violationEvent, "BUSINESS_TRANSACTION")){     
+                    snmpData.setMetric( violationEvent.getAffectedEntityName() + "|" + violationEvent.getHealthRuleName() + "|" + tCon.getConditionName() + "|" + tCon.getOperator() + "|" + tCon.getConditionUnitType());
+                }
+                if( isAffectedEntityType(violationEvent, "APPLICATION")  ){
+                    snmpData.setMetric( violationEvent.getHealthRuleName() + "|" + tCon.getConditionName() + "|" + tCon.getOperator() + "|" + tCon.getConditionUnitType());
+                }
                 snmpData.setMetric( violationEvent.getAffectedEntityName() + "|" + violationEvent.getHealthRuleName() + "|" + tCon.getConditionName() + "|" + tCon.getOperator() + "|" + tCon.getConditionUnitType());
                 snmpData.setThreshold(tCon.getThresholdValue());
                 snmpData.setCurrentValue(tCon.getObservedValue());
             }
-
-        }
-
-        if(isAffectedEntityType(violationEvent, "APPLICATION")){
-            EvaluationEntity firstEntity =  getFirstEvEntity(violationEvent.getEvaluationEntity(),"APPLICATION");
-            if (firstEntity!=null){
-                TriggerCondition tCon = getApplicationTriggeredCondition(firstEntity.getTriggeredConditions());
-                snmpData.setAgent("APP:"+tCon.getScopeName());
-                snmpData.setHost("APP:"+tCon.getScopeName());
-                snmpData.setMetric( violationEvent.getHealthRuleName() + "|" + tCon.getConditionName() + "|" + tCon.getOperator() + "|" + tCon.getConditionUnitType());
-                snmpData.setThreshold(tCon.getThresholdValue());
-                snmpData.setCurrentValue(tCon.getObservedValue());
-            }
-
         }
 
         if( 
@@ -106,7 +83,28 @@ public class SNMPDataBuilderIntroscope {
             }
         }
 
+        
+    }
 
+    public ADSnmpDataCustom buildFromHealthRuleViolationEvent(HealthRuleViolationEvent violationEvent){
+
+        ADSnmpDataCustom snmpData = new ADSnmpDataCustom();
+
+        snmpData.setAgent("agent_name");
+        snmpData.setHost("host");
+        snmpData.setAgentType("AppDynamics_APM");
+        snmpData.setDomain(violationEvent.getAppName());
+        snmpData.setMetric("metric");
+        snmpData.setThreshold("0");
+        snmpData.setCurrentValue("0");
+
+        if (config.getController() != null) {
+            snmpData.setDrillDownLink(CommonUtils.getAlertUrl(violationEvent));
+        }
+        snmpData.setDrillDownLink(CommonUtils.getAlertUrl(violationEvent));
+        snmpData.setDate(violationEvent.getPvnAlertTime());
+
+        buildTrapDetails(violationEvent,snmpData);
 
         return snmpData;
     }

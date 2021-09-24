@@ -16,7 +16,7 @@ import java.util.HashMap;
 /**
  * Creates a lookup or each attribute of SNMP and assigns an OID value
  */
-public class LookupIntroscope
+public class LookupCustom
 {
     private static String baseOID = "1.3.6.1.4.1.791.4.4.1";
     private static HashMap<String, String> map = new HashMap<String, String>();
@@ -34,7 +34,7 @@ public class LookupIntroscope
 
     private static HashMap<String,String> oidMap = new HashMap<String, String>();
 
-    public LookupIntroscope()
+    public LookupCustom()
     {
         oidMap.put("agent", "1.3.6.1.4.1.791.4.4.8");
         oidMap.put("host", "1.3.6.1.4.1.791.4.4.6");
