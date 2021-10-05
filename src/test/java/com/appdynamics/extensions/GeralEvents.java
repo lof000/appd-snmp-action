@@ -35,7 +35,7 @@ static String[] EVENT_1 = {
 "Teste Leandro triggered at Wed Sep 22 02:21:55 UTC 2021. This policy was violated because the following conditions were met for the creditnode Node for the last 1 minute(s):   For Evaluation Entity: creditnode Node - Condition 1 is greater than 0.0. Observed value = 4.0",
 "507",
 "http://ip-10-97-5-1.us-west-2.compute.internal:8090/controller/#location=APP_INCIDENT_DETAIL_MODAL&incident=",
-"POLICY_OPEN_CRITICAL",
+"POLICY_OPEN_WARNING",
 "ACCOUNT",
 "customer1_f161f981-6f1f-4fa8-a6ad-2235b48bd549"
 };
@@ -142,7 +142,7 @@ static  String[] EVENT_4 = {
 "Teste_trap triggered at Thu Sep 23 10:18:24 BRT 2021. This policy was violated because the following conditions were met for he S344Backend Tier for the last 2 minute(s):   For Evaluation Entity: S1CPTP37-S344Backend Node - Memory Used (%) is greater than 10.0. Observed value = 79.0",
 "740",
 "http://S1APDP01:8090/controller/#location=APP_INCIDENT_DETAIL_MODAL&incident=",
-"POLICY_CONTINUES_CRITICAL",
+"POLICY_CLOSE_WARNING",
 "ACCOUNT",
 "customer1_48fc1142-b3d3-4948-9b28-a210b7e6067e"
 };
@@ -178,7 +178,7 @@ static String[] EVENT_5 = {
 "Teste_trap triggered at Thu Sep 23 14:24:24 BRT 2021. This policy was violated because the following conditions were met for the S1CPTP37 Machine Instance for the last 2 minute(s):   For Evaluation Entity: S1CPTP37-java-MA Node - Condition 1 is greater than 10.0. Observed value = 74.0",
 "778",
 "http://S1APDP01:8090/controller/#location=APP_INCIDENT_DETAIL_MODAL&incident=",
-"POLICY_CONTINUES_CRITICAL",
+"POLICY_DOWNGRADED",
 "ACCOUNT",
 "customer1_48fc1142-b3d3-4948-9b28-a210b7e6067e"
 };

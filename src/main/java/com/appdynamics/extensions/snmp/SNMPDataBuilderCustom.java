@@ -55,12 +55,10 @@ public class SNMPDataBuilderCustom {
                 snmpData.setAgent("APP:"+tCon.getScopeName());
                 snmpData.setHost("APP:"+tCon.getScopeName());
                 if(isAffectedEntityType(violationEvent, "BUSINESS_TRANSACTION")){     
-                    snmpData.setMetric( violationEvent.getAffectedEntityName() + "|" + violationEvent.getHealthRuleName() + "|" + tCon.getConditionName() + "|" + tCon.getOperator() + "|" + tCon.getConditionUnitType());
+                    snmpData.setMetric( violationEvent.getAffectedEntityName() + "|" + tCon.getConditionName());
+                }else{
+                    snmpData.setMetric( tCon.getConditionName() + "|" + tCon.getOperator() + "|" + tCon.getConditionUnitType());
                 }
-                if( isAffectedEntityType(violationEvent, "APPLICATION")  ){
-                    snmpData.setMetric( violationEvent.getHealthRuleName() + "|" + tCon.getConditionName() + "|" + tCon.getOperator() + "|" + tCon.getConditionUnitType());
-                }
-                snmpData.setMetric( violationEvent.getAffectedEntityName() + "|" + violationEvent.getHealthRuleName() + "|" + tCon.getConditionName() + "|" + tCon.getOperator() + "|" + tCon.getConditionUnitType());
                 snmpData.setThreshold(tCon.getThresholdValue());
                 snmpData.setCurrentValue(tCon.getObservedValue());
             }
@@ -77,13 +75,13 @@ public class SNMPDataBuilderCustom {
                 TriggerCondition tCon = getApplicationNodeTriggeredCondition(firstEntity.getTriggeredConditions());
                 snmpData.setAgent(tCon.getScopeName());
                 snmpData.setHost(tCon.getScopeName());
-                snmpData.setMetric( violationEvent.getHealthRuleName() + "|" + tCon.getConditionName() + "|" + tCon.getOperator() + "|" + tCon.getConditionUnitType());
+                snmpData.setMetric( tCon.getConditionName());
                 snmpData.setThreshold(tCon.getThresholdValue());
                 snmpData.setCurrentValue(tCon.getObservedValue());
             }
         }
 
-        
+        snmpData.setPolicyStatus(violationEvent.getEventType());
     }
 
     public ADSnmpDataCustom buildFromHealthRuleViolationEvent(HealthRuleViolationEvent violationEvent){

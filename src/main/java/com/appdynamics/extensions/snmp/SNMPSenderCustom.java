@@ -46,7 +46,9 @@ public class SNMPSenderCustom {
             logger.info("Sending trap to " + receiver.getHost() + ":" + receiver.getPort());
             try {
                 if (config.getSnmpVersion() == SNMP_V2) {
-                    sendV2Trap(receiver.getHost(), Integer.toString(receiver.getPort()), config.getCommunity(), config.getSenderHost(), snmpData,trapOid);
+                    //sendV2Trap(receiver.getHost(), Integer.toString(receiver.getPort()), config.getCommunity(), config.getSenderHost(), snmpData,trapOid);
+                    sendV1Trap(receiver.getHost(), Integer.toString(receiver.getPort()), config.getCommunity(), config.getSenderHost(), snmpData,trapOid);
+                    
                 }else{
                     logger.error("THIS GUY ONLY SUPPORTS SNMP_V2");
                     exceptions.add("THIS GUY ONLY SUPPORTS SNMP_V2");
@@ -90,7 +92,7 @@ public class SNMPSenderCustom {
         comTarget.setAddress(new UdpAddress(host + '/' + port));
         comTarget.setRetries(2);
         comTarget.setTimeout(5000);
-
+        
         TimeTicks sysUpTime = getTimeTicks();
 
         PDU pdu = new PDU();
@@ -116,7 +118,6 @@ public class SNMPSenderCustom {
         }
 
         pdu.setType(PDU.NOTIFICATION);
-
         Snmp snmp = new Snmp(transport);
         snmp.send(pdu, comTarget);
         snmp.close();
@@ -127,5 +128,68 @@ public class SNMPSenderCustom {
         return CommonUtils.getTimeTicks(upTimeInMs);
     }
 
+
+    /**
+     * Sends v1 Traps
+     * @param 	host 						Host to send trap to
+     * @param 	port						Port location to send trap to
+     * @param 	community					Community (Default: PUBLIC)
+     * @param 	trapHost					Host of the source sending the trap
+     * @param 	snmpData					Trap Data
+     * @throws java.io.IOException                    Failed to send trap exception
+     * @throws 	IllegalArgumentException 	Failed to access snmp trap variables
+     * @throws 	IllegalAccessException 		Failed to access snmp trap variables
+     */
+    @SuppressWarnings("rawtypes")
+    private void sendV1Trap(String host, String port, String community, String trapHost, ADSnmpDataCustom snmpData,String trapOid)
+            throws IOException, IllegalArgumentException, IllegalAccessException
+    {
+        
+        LookupCustom lookUp = new LookupCustom();
+
+        TransportMapping transport = new DefaultUdpTransportMapping();
+        transport.listen();
+
+        CommunityTarget comTarget = new CommunityTarget();
+        comTarget.setCommunity(new OctetString(community));
+        comTarget.setVersion(SnmpConstants.version1);
+        comTarget.setAddress(new UdpAddress(host + "/" + port));
+        comTarget.setRetries(2);
+        comTarget.setTimeout(5000);
+
+        TimeTicks sysUpTime = getTimeTicks();
+
+        PDUv1 pdu = new PDUv1();
+        pdu.setType(PDU.V1TRAP);
+        //pdu.setEnterprise(new OID(trapOid));
+        pdu.setEnterprise(new OID("1.3.6.1.4.1.791"));
+        pdu.setGenericTrap(PDUv1.ENTERPRISE_SPECIFIC);
+        pdu.setSpecificTrap(1);
+        pdu.setAgentAddress(new IpAddress(trapHost));
+
+        pdu.add(new VariableBinding(SnmpConstants.sysUpTime,  sysUpTime));
+        pdu.add(new VariableBinding(SnmpConstants.snmpTrapOID, new OID(trapOid)));
+        pdu.add(new VariableBinding(SnmpConstants.snmpTrapAddress, new IpAddress(trapHost)));
+
+        for (Field field : snmpData.getClass().getDeclaredFields())
+        {
+            if(field.get(snmpData) != null) {
+                try {
+                    Object snmpVal = new OctetString(field.get(snmpData).toString());
+
+                    if (!(snmpVal.equals(" ") || snmpVal.equals(""))) {
+                        pdu.add(new VariableBinding(new OID(lookUp.getOID(field.getName())), new OctetString(snmpVal.toString())));
+                    }
+                } catch (Throwable ex) {
+                    logger.error("Error reading snmp data field:", ex);
+                }
+            }
+        }
+        System.out.println("Enviando trap v1....");
+        Snmp snmp = new Snmp(transport);
+        snmp.send(pdu, comTarget);
+        snmp.close();
+        
+    }
 
 }

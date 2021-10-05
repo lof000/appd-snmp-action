@@ -22,18 +22,18 @@ import java.util.Arrays;
 public class SnmpTrapAlertExtension {
 
     public static final String MULTI_TENANCY = "appDynamics.controller.multiTenant";
-    private static final String TRAP_OID_NOTIFICATIONS = "11.3.6.1.4.1.791.4.4";
-    private static final String TRAP_OID_01 = "1.3.6.1.4.1.791.4.4";
-    private static final String TRAP_OID_02 = "1.3.6.1.4.1.791.4.4";
-    private static final String TRAP_OID_03 = "1.3.6.1.4.1.791.4.4";
-    private static final String TRAP_OID_04 = "1.3.6.1.4.1.791.4.4";
-    private static final String TRAP_OID_05 = "1.3.6.1.4.1.791.4.4";
-    private static final String TRAP_OID_06 = "1.3.6.1.4.1.791.4.4";
-    private static final String TRAP_OID_07 = "1.3.6.1.4.1.791.4.4";
-    private static final String TRAP_OID_08 = "1.3.6.1.4.1.791.4.4";
-    private static final String TRAP_OID_09 = "1.3.6.1.4.1.791.4.4";
-    private static final String TRAP_OID_10 = "1.3.6.1.4.1.791.4.4";
-    private static final String TRAP_OID_11 = "1.3.6.1.4.1.791.4.4";
+    private static final String TRAP_OID_NOTIFICATIONS = "1.3.6.1.4.1.791.6.1";
+    private static final String TRAP_OID_01 = "1.3.6.1.4.1.791.6.1";
+    private static final String TRAP_OID_02 = "1.3.6.1.4.1.791.6.1";
+    private static final String TRAP_OID_03 = "1.3.6.1.4.1.791.6.1";
+    private static final String TRAP_OID_04 = "1.3.6.1.4.1.791.6.1";
+    private static final String TRAP_OID_05 = "1.3.6.1.4.1.791.6.1";
+    private static final String TRAP_OID_06 = "1.3.6.1.4.1.791.6.1";
+    private static final String TRAP_OID_07 = "1.3.6.1.4.1.791.6.1";
+    private static final String TRAP_OID_08 = "1.3.6.1.4.1.791.6.1";
+    private static final String TRAP_OID_09 = "1.3.6.1.4.1.791.6.1";
+    private static final String TRAP_OID_10 = "1.3.6.1.4.1.791.6.1";
+    private static final String TRAP_OID_11 = "1.3.6.1.4.1.791.6.1";
 
     private static Logger logger = Logger.getLogger(SnmpTrapAlertExtension.class);
 
