@@ -32,7 +32,15 @@ public class ADSnmpDataCustom
     String date;
     String type;
     String policyStatus;
+    String ic;
 
+    public String getIc() {
+        return ic;
+    }
+
+    public void setIc(String ic) {
+        this.ic = ic;
+    }
 
     //POLICY_OPEN_WARNING, POLICY_OPEN_CRITICAL, POLICY_CLOSE_WARNING, POLICY_CLOSE_CRITICAL, POLICY_UPGRADED, POLICY_DOWNGRADED, POLICY_CANCELED_WARNING, 
     //POLICY_CANCELED_CRITICAL, POLICY_CONTINUES_CRITICAL, and POLICY_CONTINUES_WARNING.

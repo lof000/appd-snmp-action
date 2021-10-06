@@ -30,7 +30,8 @@ public class LookupCustom
             "currentValue",
             "drillDownLink",
             "date",
-            "policyStatus"
+            "policyStatus",
+            "ic"
     };
 
     private static HashMap<String,String> oidMap = new HashMap<String, String>();
@@ -47,6 +48,7 @@ public class LookupCustom
         oidMap.put("drillDownLink", "1.3.6.1.4.1.791.4.4.11");
         oidMap.put("date", "1.3.6.1.4.1.791.4.4.1");
         oidMap.put("policyStatus", "1.3.6.1.4.1.791.4.4.16");
+        oidMap.put("ic", "1.3.6.1.4.1.791.4.4.27");
 
         map = oidMap;
 

@@ -54,6 +54,7 @@ public class SNMPDataBuilderCustom {
                 TriggerCondition tCon = getApplicationTriggeredCondition(firstEntity.getTriggeredConditions());
                 snmpData.setAgent("APP:"+tCon.getScopeName());
                 snmpData.setHost("APP:"+tCon.getScopeName());
+                snmpData.setIc("APP:"+tCon.getScopeName());
                 if(isAffectedEntityType(violationEvent, "BUSINESS_TRANSACTION")){     
                     snmpData.setMetric( violationEvent.getAffectedEntityName() + "|" + tCon.getConditionName());
                 }else{
@@ -78,6 +79,7 @@ public class SNMPDataBuilderCustom {
                 snmpData.setMetric( tCon.getConditionName());
                 snmpData.setThreshold(tCon.getThresholdValue());
                 snmpData.setCurrentValue(tCon.getObservedValue());
+                snmpData.setIc(tCon.getScopeName());
             }
         }
 
