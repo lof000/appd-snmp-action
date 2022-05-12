@@ -46,8 +46,8 @@ public class SNMPSenderCustom {
             logger.info("Sending trap to " + receiver.getHost() + ":" + receiver.getPort());
             try {
                 if (config.getSnmpVersion() == SNMP_V2) {
-                    //sendV2Trap(receiver.getHost(), Integer.toString(receiver.getPort()), config.getCommunity(), config.getSenderHost(), snmpData,trapOid);
-                    sendV1Trap(receiver.getHost(), Integer.toString(receiver.getPort()), config.getCommunity(), config.getSenderHost(), snmpData,trapOid);
+                    sendV2Trap(receiver.getHost(), Integer.toString(receiver.getPort()), config.getCommunity(), config.getSenderHost(), snmpData,trapOid);
+                    //sendV1Trap(receiver.getHost(), Integer.toString(receiver.getPort()), config.getCommunity(), config.getSenderHost(), snmpData,trapOid);
                     
                 }else{
                     logger.error("THIS GUY ONLY SUPPORTS SNMP_V2");
@@ -82,7 +82,6 @@ public class SNMPSenderCustom {
             throws IOException, IllegalArgumentException, IllegalAccessException
     {
         LookupCustom lookUp = new LookupCustom();
-        System.out.println("oi estou mandandando uma trap v2 do introscope >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
         TransportMapping transport = new DefaultUdpTransportMapping();
         transport.listen();
 
@@ -119,6 +118,7 @@ public class SNMPSenderCustom {
 
         pdu.setType(PDU.NOTIFICATION);
         Snmp snmp = new Snmp(transport);
+        logger.info("Enviando trap v2....");
         snmp.send(pdu, comTarget);
         snmp.close();
     }
@@ -185,7 +185,7 @@ public class SNMPSenderCustom {
                 }
             }
         }
-        System.out.println("Enviando trap v1....");
+        logger.info("Enviando trap v1....");
         Snmp snmp = new Snmp(transport);
         snmp.send(pdu, comTarget);
         snmp.close();

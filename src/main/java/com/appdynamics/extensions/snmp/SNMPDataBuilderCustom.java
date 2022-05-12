@@ -71,16 +71,29 @@ public class SNMPDataBuilderCustom {
         isAffectedEntityType(violationEvent, "APPLICATION_COMPONENT")   || 
         isAffectedEntityType(violationEvent, "MACHINE_INSTANCE")
         ){
-            EvaluationEntity firstEntity =  getFirstEvEntity(violationEvent.getEvaluationEntity(),"APPLICATION_COMPONENT_NODE");
-            if (firstEntity!=null){
-                TriggerCondition tCon = getApplicationNodeTriggeredCondition(firstEntity.getTriggeredConditions());
-                snmpData.setAgent(tCon.getScopeName());
-                snmpData.setHost(tCon.getScopeName());
-                snmpData.setMetric( tCon.getConditionName());
-                snmpData.setThreshold(tCon.getThresholdValue());
-                snmpData.setCurrentValue(tCon.getObservedValue());
-                snmpData.setIc(tCon.getScopeName());
+            if ((!violationEvent.getEventType().contains("CANCELED")) &&  (!violationEvent.getEventType().contains("CLOSE")) ){
+                EvaluationEntity firstEntity =  getFirstEvEntity(violationEvent.getEvaluationEntity(),"APPLICATION_COMPONENT_NODE");
+                if (firstEntity!=null){
+                    TriggerCondition tCon = getApplicationNodeTriggeredCondition(firstEntity.getTriggeredConditions());
+                    snmpData.setAgent(tCon.getScopeName());
+                    snmpData.setHost(tCon.getScopeName());
+                    snmpData.setMetric( tCon.getConditionName());
+                    snmpData.setThreshold(tCon.getThresholdValue());
+                    snmpData.setCurrentValue(tCon.getObservedValue());
+                    snmpData.setIc(tCon.getScopeName());
+                }
+            }else{
+                System.out.println("llllll");
+
+                snmpData.setAgent(violationEvent.getAffectedEntityName());
+                snmpData.setHost(violationEvent.getAffectedEntityName());
+                snmpData.setMetric(violationEvent.getHealthRuleName());
+                snmpData.setThreshold("0");
+                snmpData.setCurrentValue("0");
+                snmpData.setIc(violationEvent.getAffectedEntityName());
+
             }
+
         }
 
         snmpData.setPolicyStatus(violationEvent.getEventType());

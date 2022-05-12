@@ -183,12 +183,168 @@ static String[] EVENT_5 = {
 "customer1_48fc1142-b3d3-4948-9b28-a210b7e6067e"
 };
 
+static String[] EVENT_6 = {
+"backend",
+ "15",
+ "Wed May 11 21:14:36 UTC 2022",
+ "1",
+ "INFO",
+ "spectrum",
+ "testes2",
+ "61",
+ "1",
+ "APPLICATION_COMPONENT_NODE",
+ "node1",
+ "900",
+ "0",
+ "testes2 triggered at Wed May 11 21:14:36 UTC 2022. This policy was violated because the following conditions were met for the node1 Node for the last 1 minute(s): ",
+ "201",
+ "http://ip-10-97-16-188.us-west-2.compute.internal:8090/controller/#location=APP_INCIDENT_DETAIL_MODAL&incident=",
+ "POLICY_CANCELED_CRITICAL",
+ "ACCOUNT",
+ "customer1_f161f981-6f1f-4fa8-a6ad-2235b48bd549"};
+ 
+ static String[] EVENT_7 = {
+"S265",
+"12",
+"Fri Apr 01 13:55:49 BRT 2022",
+"1",
+"INFO",
+"Trap_Spectrum",
+"Disponibilidade_Monitoracao",
+"64",
+"5",
+"APPLICATION_COMPONENT",
+"Monitoracao",
+"38",
+"0",
+"Disponibilidade_Monitoracao triggered at Fri Apr 01 13:55:49 BRT 2022. This policy was violated because the following conditions were met for the Monitoracao Tier for the last 5 minute(s):",
+"5757",
+"http://S1APDP01:8090/controller/#location=APP_INCIDENT_DETAIL_MODAL&incident=",
+"POLICY_CLOSE_CRITICAL",
+"ACCOUNT",
+"customer1_48fc1142-b3d3-4948-9b28-a210b7e6067e"};
+
+static String[] EVENT_8 = {
+"S265",
+"12",
+"Fri Apr 01 14:14:49 BRT 2022",
+"1",
+"INFO",
+"Trap_Spectrum",
+"Disponibilidade_Monitoracao",
+"64",
+"5",
+"APPLICATION_COMPONENT",
+"Monitoracao",
+"38",
+"0",
+"Disponibilidade_Monitoracao triggered at Fri Apr 01 14:14:49 BRT 2022. This policy was violated because the following conditions were met for the Monitoracao Tier for the last 5 minute(s): ",
+"5758",
+"http://S1APDP01:8090/controller/#location=APP_INCIDENT_DETAIL_MODAL&incident=",
+"POLICY_CLOSE_CRITICAL",
+"ACCOUNT",
+"customer1_48fc1142-b3d3-4948-9b28-a210b7e6067e"};
+
+
+static String[] EVENT_9 = {
+"S265",
+"12",
+"Fri Apr 01 14:31:04 BRT 2022",
+"1",
+"INFO",
+"Trap_Spectrum",
+"Disponibilidade_Suporte",
+"65",
+"5",
+"APPLICATION_COMPONENT",
+"Suporte_Pagamento_Recebimento",
+"42",
+"0",
+"Disponibilidade_Suporte triggered at Fri Apr 01 14:31:04 BRT 2022. This policy was violated because the following conditions were met for the Suporte_Pagamento_Recebimento Tier for the last 5 minute(s): ",
+"5722",
+"http://S1APDP01:8090/controller/#location=APP_INCIDENT_DETAIL_MODAL&incident=",
+"POLICY_CANCELED_CRITICAL",
+"ACCOUNT",
+"customer1_48fc1142-b3d3-4948-9b28-a210b7e6067e"};
+
+static String[] EVENT_10 = {
+"S265",
+"12",
+"Sat May 07 00:56:01 BRT 2022",
+"1",
+"ERROR",
+"Trap_Spectrum",
+"Disponibilidade_Pagamento",
+"59",
+"2",
+"APPLICATION_COMPONENT",
+"Pagamento",
+"45",
+"2",
+"APPLICATION_COMPONENT_NODE",
+"WXS101B",
+"430",
+"2",
+"APPLICATION_COMPONENT_NODE",
+"WXS101B",
+"430",
+"PIX_Pagamento_Indisponivel",
+"1128",
+"GREATER_THAN",
+"ABSOLUTE",
+"1500.0",
+"20817.0",
+"APPLICATION_COMPONENT_NODE",
+"WXS101B",
+"430",
+"PIX_Pagamento_Indisponivel",
+"1129",
+"GREATER_THAN",
+"ABSOLUTE",
+"10.0",
+"12.0",
+"APPLICATION_COMPONENT_NODE",
+"WXS101A",
+"429",
+"2",
+"APPLICATION_COMPONENT_NODE",
+"WXS101A",
+"429",
+"PIX_Pagamento_Indisponivel",
+"1128",
+"GREATER_THAN",
+"ABSOLUTE",
+"1500.0",
+"23363.0",
+"APPLICATION_COMPONENT_NODE",
+"WXS101A",
+"429",
+"PIX_Pagamento_Indisponivel",
+"1129",
+"GREATER_THAN",
+"ABSOLUTE",
+"10.0",
+"13.0",
+"Disponibilidade_Pagamento triggered at Sat May 07 00:56:01 BRT 2022. This policy was violated because the following conditions were met for the Pagamento Tier for the last 2 minute(s):   For Evaluation Entity: WXS101B Node - PIX_Pagamento_Indisponivel is greater than 1500.0. Observed value = 20817.0 - PIX_Pagamento_Indisponivel is greater than 10.0. Observed value = 12.0  For Evaluation Entity: WXS101A Node - PIX_Pagamento_Indisponivel is greater than 1500.0. Observed value = 23363.0 - PIX_Pagamento_Indisponivel is greater than 10.0. Observed value = 13.0",
+"6865",
+"http://S1APDP01:8090/controller/#location=APP_INCIDENT_DETAIL_MODAL&incident=",
+"POLICY_OPEN_CRITICAL",
+"ACCOUNT",
+"customer1_48fc1142-b3d3-4948-9b28-a210b7e6067e"};
+
+
 public static void main(String args[]){
-    SnmpTrapAlertExtension.main(EVENT_1);
-    SnmpTrapAlertExtension.main(EVENT_2);
-    SnmpTrapAlertExtension.main(EVENT_3);
-    SnmpTrapAlertExtension.main(EVENT_4);
-    SnmpTrapAlertExtension.main(EVENT_5);
+    //SnmpTrapAlertExtension.main(EVENT_1);
+    //SnmpTrapAlertExtension.main(EVENT_2);
+    //SnmpTrapAlertExtension.main(EVENT_3);
+    //SnmpTrapAlertExtension.main(EVENT_4);
+    //SnmpTrapAlertExtension.main(EVENT_5);
+    //SnmpTrapAlertExtension.main(EVENT_6);
+    //SnmpTrapAlertExtension.main(EVENT_7);
+    //SnmpTrapAlertExtension.main(EVENT_8);
+    //SnmpTrapAlertExtension.main(EVENT_9);
+    SnmpTrapAlertExtension.main(EVENT_10);
 }
     
 }

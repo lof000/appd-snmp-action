@@ -56,6 +56,7 @@ public class SnmpTrapAlertExtension {
        
         try {
             logger.info("\n\n*************START****************");
+            logger.info("\n\nBNB APP SPECTRUM TRAP - V.2");
             logger.debug("Args passed => " + Arrays.asList(args));
             if (args == null || args.length == 0) {
                 logger.error("No arguments passed to the extension, exiting the program.");

@@ -198,6 +198,7 @@ public class ADSnmpDataCustom
                 ", threshold='" + threshold + '\'' +
                 ", currentValue='" + currentValue + '\'' +
                 ", drillDownLink='" + drillDownLink + '\'' +
+                ", policyStatus='" + policyStatus + '\'' +
                 ", date='" + date + '\'' +
                 '}';
     }

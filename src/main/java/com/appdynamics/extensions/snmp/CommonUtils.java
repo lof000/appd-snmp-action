@@ -57,6 +57,7 @@ public class CommonUtils {
                 BufferedReader in = new BufferedReader(new InputStreamReader(uptimeProc.getInputStream()));
                 String line;
                 while ((line = in.readLine()) != null) {
+                    logger.debug("getSysUptime - real line : "+ line);
                     if (line.startsWith("Statistics since")) {
                         SimpleDateFormat format = new SimpleDateFormat("'Statistics since' MM/dd/yyyy hh:mm:ss a");
                         Date boottime = format.parse(line);

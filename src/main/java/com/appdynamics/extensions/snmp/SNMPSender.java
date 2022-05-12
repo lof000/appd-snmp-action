@@ -158,7 +158,6 @@ public class SNMPSender {
             throws IOException, IllegalArgumentException, IllegalAccessException
     {
         Lookup lookUp = new Lookup();
-        System.out.println("oi estou mandandando uma trap v2 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
         TransportMapping transport = new DefaultUdpTransportMapping();
         transport.listen();
 
@@ -216,7 +215,6 @@ public class SNMPSender {
             throws IOException, IllegalArgumentException, IllegalAccessException
     {
         Lookup lookUp = new Lookup();
-        System.out.println("oi estou mandandando uma trap v2 do introscope >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
         TransportMapping transport = new DefaultUdpTransportMapping();
         transport.listen();
 
