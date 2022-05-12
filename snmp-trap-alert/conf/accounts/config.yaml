@@ -1,0 +1,77 @@
+######SNMP Trap information start##############
+
+###Multiple receivers can be configured. Below configuration will be common to all receivers.
+receivers:
+     #host name or ip address of the snmp trap receiver
+   - host: "localhost"
+     #listener port of the snmp trap receiver
+     port: 161
+
+#community level
+community: "PUBLIC"
+
+#descriptive name of the snmp trap sender | host name or ip address are commonly used
+senderHost: "myhost"
+
+
+#Indicates the version of the MIB file used from the files included in the distribution
+#there are 3 MIB file versions, each having their own level of OID segmentation
+#APPD-CTLR-MIB-v1.mib | 1 OID emitted
+#1.3.6.1.4.1.40684.1.1.1.500.1 | all notifications
+###################################################################################### -->
+#APPD-CTLR-MIB-v2.mib | 3 OID's emitted
+#1.3.6.1.4.1.40684.1.1.1.500.1 | Policy Open Notification
+#1.3.6.1.4.1.40684.1.1.1.500.2 | Policy Closed Notification
+#1.3.6.1.4.1.40684.1.1.1.500.3 | nonPolicyEvent Notification
+###################################################################################### -->
+#APPD-CTLR-MIB-v3.mib | 11 OID's emitted
+#1.3.6.1.4.1.40684.1.1.1.500.1| Policy Open Warning Notification
+#1.3.6.1.4.1.40684.1.1.1.500.2| Policy Open Critical Notification
+#1.3.6.1.4.1.40684.1.1.1.500.3| Policy Open Upgraded Notification
+#1.3.6.1.4.1.40684.1.1.1.500.4| Policy Open Downgraded Notification
+#1.3.6.1.4.1.40684.1.1.1.500.5| Policy Closed Warning Notification
+#1.3.6.1.4.1.40684.1.1.1.500.6| Policy Closed Critical Notification
+#1.3.6.1.4.1.40684.1.1.1.500.7| Informational Event Notification
+#1.3.6.1.4.1.40684.1.1.1.500.8| Policy Cancelled Warning
+#1.3.6.1.4.1.40684.1.1.1.500.9| Policy Cancelled Critical
+#1.3.6.1.4.1.40684.1.1.1.500.10| Policy Continues Warning
+#1.3.6.1.4.1.40684.1.1.1.500.11 | Policy Continues Critical
+###################################################################################### -->
+mibVersion: 2
+
+#snmp version used to send the trap to the receiver | Possible values = 1 or 2 or 3
+snmpVersion: 2
+
+#####################################################################################
+#Uncomment the below lines only if snmpVersion=3. The below lines will configure the auth level
+#policies for snmp v3.
+#####################################################################################
+#snmpV3Configuration:
+#  securityLevel:
+#  username: ""
+#  password: ""
+#  authProtocol: ""
+#  privProtocol: ""
+#  privProtocolPassword: ""
+
+######SNMP Trap information end##############
+
+
+
+######AppD information start##################
+fetchMachineInfoFromApi: false
+
+#The controller information below is MANDATORY. The only reason this is needed is because
+#the custom actions don't get enough context like the Machine Names, IP addresses of the nodes
+#that are affected. Using the below info, the extension makes an effort to get the details from REST APIs.
+controller:
+  host: ""
+  port:
+  useSsl: true
+  userAccount: ""
+  password: ""
+
+
+
+
+######AppD information end#################
