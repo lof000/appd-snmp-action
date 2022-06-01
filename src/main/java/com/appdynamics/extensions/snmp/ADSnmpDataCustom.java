@@ -200,6 +200,7 @@ public class ADSnmpDataCustom
                 ", drillDownLink='" + drillDownLink + '\'' +
                 ", policyStatus='" + policyStatus + '\'' +
                 ", date='" + date + '\'' +
+                ", ic='" + ic + '\'' +
                 '}';
     }
 }

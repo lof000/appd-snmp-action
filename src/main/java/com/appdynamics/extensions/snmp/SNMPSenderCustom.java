@@ -46,8 +46,9 @@ public class SNMPSenderCustom {
             logger.info("Sending trap to " + receiver.getHost() + ":" + receiver.getPort());
             try {
                 if (config.getSnmpVersion() == SNMP_V2) {
-                    sendV2Trap(receiver.getHost(), Integer.toString(receiver.getPort()), config.getCommunity(), config.getSenderHost(), snmpData,trapOid);
-                    //sendV1Trap(receiver.getHost(), Integer.toString(receiver.getPort()), config.getCommunity(), config.getSenderHost(), snmpData,trapOid);
+                    //sendV2Trap(receiver.getHost(), Integer.toString(receiver.getPort()), config.getCommunity(), config.getSenderHost(), snmpData,trapOid);
+                    logger.info("mandando trap V1");
+                    sendV1Trap(receiver.getHost(), Integer.toString(receiver.getPort()), config.getCommunity(), config.getSenderHost(), snmpData,trapOid);
                     
                 }else{
                     logger.error("THIS GUY ONLY SUPPORTS SNMP_V2");

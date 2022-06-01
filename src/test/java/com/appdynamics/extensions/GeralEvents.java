@@ -334,6 +334,100 @@ static String[] EVENT_10 = {
 "customer1_48fc1142-b3d3-4948-9b28-a210b7e6067e"};
 
 
+static String[] EVENT_11 = {
+"S265",
+"12",
+"Fri May 13 10:53:15 BRT 2022",
+"1",
+"ERROR",
+"Trap_Spectrum",
+"Lentidao_Pagamento",
+"58",
+"1",
+"APPLICATION_COMPONENT",
+"Pagamento",
+"45",
+"4",
+"APPLICATION_COMPONENT_NODE",
+"WXS101B",
+"430",
+"1",
+"APPLICATION_COMPONENT_NODE",
+"WXS101B",
+"430",
+"TESTE_DESCONSIDERAR_ESSE_ALERTA",
+"1142",
+"GREATER_THAN",
+"ABSOLUTE",
+"1.0",
+"54.0",
+"APPLICATION_COMPONENT_NODE",
+"WXS121A",
+"431",
+"1",
+"APPLICATION_COMPONENT_NODE",
+"WXS121A",
+"431",
+"TESTE_DESCONSIDERAR_ESSE_ALERTA",
+"1142",
+"GREATER_THAN",
+"ABSOLUTE",
+"1.0",
+"111.0",
+"APPLICATION_COMPONENT_NODE",
+"WXS121B",
+"432",
+"1",
+"APPLICATION_COMPONENT_NODE",
+"WXS121B",
+"432",
+"TESTE_DESCONSIDERAR_ESSE_ALERTA",
+"1142",
+"GREATER_THAN",
+"ABSOLUTE",
+"1.0",
+"114.0",
+"APPLICATION_COMPONENT_NODE",
+"WXS101A",
+"429",
+"1",
+"APPLICATION_COMPONENT_NODE",
+"WXS101A",
+"429",
+"TESTE_DESCONSIDERAR_ESSE_ALERTA",
+"1142",
+"GREATER_THAN",
+"ABSOLUTE",
+"1.0",
+"63.0",
+"Lentidao_Pagamento triggered at Fri May 13 10:53:15 BRT 2022. This policy was violated because the following conditions were met for the Pagamento Tier for the last 1 minute(s):   For Evaluation Entity: WXS101B Node - TESTE_DESCONSIDERAR_ESSE_ALERTA is greater than 1.0. Observed value = 54.0  For Evaluation Entity: WXS121A Node - TESTE_DESCONSIDERAR_ESSE_ALERTA is greater than 1.0. Observed value = 111.0  For Evaluation Entity: WXS121B Node - TESTE_DESCONSIDERAR_ESSE_ALERTA is greater than 1.0. Observed value = 114.0  For Evaluation Entity: WXS101A Node - TESTE_DESCONSIDERAR_ESSE_ALERTA is greater than 1.0. Observed value = 63.0",
+"6981",
+"http://S1APDP01:8090/controller/#location=APP_INCIDENT_DETAIL_MODAL&incident=",
+"POLICY_OPEN_CRITICAL",
+"ACCOUNT",
+"customer1_48fc1142-b3d3-4948-9b28-a210b7e6067e"};
+
+static String[] EVENT_12 = {
+"S265",
+"12",
+"Fri May 13 12:44:55 BRT 2022",
+"1",
+"INFO",
+"Trap_Spectrum",
+"Lentidao_Pagamento",
+"58",
+"1",
+"APPLICATION_COMPONENT",
+"Pagamento",
+"45",
+"0",
+"Lentidao_Pagamento triggered at Fri May 13 12:44:55 BRT 2022. This policy was violated because the following conditions were met for the Pagamento Tier for the last 1 minute(s): ",
+"6982",
+"http://S1APDP01:8090/controller/#location=APP_INCIDENT_DETAIL_MODAL&incident=",
+"POLICY_CANCELED_CRITICAL",
+"ACCOUNT",
+"customer1_48fc1142-b3d3-4948-9b28-a210b7e6067e"};
+
 public static void main(String args[]){
     //SnmpTrapAlertExtension.main(EVENT_1);
     //SnmpTrapAlertExtension.main(EVENT_2);
@@ -344,7 +438,13 @@ public static void main(String args[]){
     //SnmpTrapAlertExtension.main(EVENT_7);
     //SnmpTrapAlertExtension.main(EVENT_8);
     //SnmpTrapAlertExtension.main(EVENT_9);
-    SnmpTrapAlertExtension.main(EVENT_10);
+    //SnmpTrapAlertExtension.main(EVENT_10);
+
+    //alerta
+    //SnmpTrapAlertExtension.main(EVENT_11);
+
+    //clear
+    SnmpTrapAlertExtension.main(EVENT_12);
 }
     
 }
